@@ -4,9 +4,21 @@
 
 1. non docker compose run
 
-copy the `env.example.sh` to `env.sh` 
+setup virtual environment
+
+```shell
+python3 -m venv .venv
+```
+
+copy the `env.example.sh` to `env.sh`
 ```shell
 cp .env.example env
+```
+
+install the requirements
+
+```shell
+pip install -r requirements.txt
 ```
 
 setup Flask App
@@ -44,4 +56,3 @@ run docker compose
 ```shell
 docker-compose up -d
 ```
-
