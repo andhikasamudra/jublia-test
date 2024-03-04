@@ -56,3 +56,20 @@ run docker compose
 ```shell
 docker-compose up -d
 ```
+
+access it with curl
+```shell
+curl --location 'http://127.0.0.1:8080/save_emails' \
+--header 'Content-Type: application/json' \
+--data '{
+    "event_id" : 123,
+    "subject" : "testing",
+    "content": "testing",
+    "sent_timestamp": "05 Mar 2024 11:31"
+}'
+```
+
+or postman collection at
+```shell
+(project dir)/Jublia Test API.postman_collection.json
+```

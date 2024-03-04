@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "65bce99f-6b93-4851-9a4f-399327d9e382",
+		"name": "Jublia Test API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10162091"
+	},
+	"item": [
+		{
+			"name": "Save Emails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"event_id\" : 123,\n    \"subject\" : \"testing\",\n    \"content\": \"testing\",\n    \"sent_timestamp\": \"05 Mar 2024 11:31\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/save_emails",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"save_emails"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
