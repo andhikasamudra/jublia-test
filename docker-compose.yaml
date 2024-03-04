@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  flask-app:
+    build: .
+    image: flask-app:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    env_file: .env
+    command: >
+      bash -c "flask db upgrade && gunicorn manage:app -b 0.0.0.0:8080"
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+
+  celery-worker:
+    build: .
+    image: flask-app:latest
+    depends_on:
+      - flask-app
+    env_file: .env
+    command: [ "celery", "worker", "--loglevel=info" ]
+
+  celery-beat:
+    build: .
+    image: flask-app:latest
+    depends_on:
+      - flask-app
+    env_file: .env
+    command: [ "celery", "beat", "--loglevel=info" ]
+
+volumes:
+  postgres_data:
